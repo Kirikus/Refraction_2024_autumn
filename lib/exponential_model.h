@@ -1,15 +1,21 @@
 #pragma once
-#include <cmath>
 
 class ExponentialAtmosphere : public AtmosphereModel{
 public:
-    ExponentialAtmosphere(double _N0, double _decay_rate) : N0(_N0), decay_rate(_decay_rate) {}
+    ExponentialAtmosphere(double _Ns, double _hs) : Ns(_N0), hs(_hs) {}
 
+    // SOURCE: (2.30, 2.31)
+    //    N : refractive index, []
+    //    h : height above the sea level, [m]
     virtual double N(double h) override {
-        return N0 * std::exp(_decay_rate * h);
+        // Values for diaposon 0 - 15 km
+        double const hb = 12192;
+        double const Nb = 66.65;
+        double Hb =  (hb - hs) / log(Ns / Nb);
+        return Ns * exp(-(h - hs) / Hb);
     }
 
 private:
-    double N0;
-    double decay_rate;
+    double Ns;
+    double hs
 };
