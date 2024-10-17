@@ -4,7 +4,8 @@
 
 class AtmosphereModel {
     public:
-        // Function of recieving the refractive index from height
+        // N - refractive index - []
+        // h - height - [m]
         virtual double N() (double h) = 0;
 };
 
