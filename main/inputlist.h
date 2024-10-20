@@ -1,5 +1,5 @@
-#ifndef INPUTPROBLEM_H
-#define INPUTPROBLEM_H
+#ifndef INPUTLIST_H
+#define INPUTLIST_H
 
 #include <QWidget>
 #include <qvector.h>
@@ -7,6 +7,7 @@
 #include <QLineEdit>
 #include <QVBoxLayout>
 #include <QTableWidget>
+#include <QSpacerItem>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -15,12 +16,13 @@ class MainWindow;
 QT_END_NAMESPACE
 
 
-class GostInput : public QTableWidget {
+class GostInput : public QWidget {
     Q_OBJECT
 
     int rowsAmount = 15, columnsAmount = 3;
     QStringList headers = {"h", "P", "T"};
-
+    QTableWidget *table;
+    QVBoxLayout *widgetLayout;
 public:
     GostInput(QWidget *parent = nullptr);
 };
@@ -36,7 +38,8 @@ private:
     QGridLayout *widgetLayout;
     QVector<QLabel*> labels;
     QVector<QLineEdit*> edits;
+    QSpacerItem *verticalSpacer;
 
 };
 
-#endif // INPUTPROBLEM_H
+#endif // INPUTLIST_H
