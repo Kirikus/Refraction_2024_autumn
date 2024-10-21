@@ -8,6 +8,7 @@
 #include <QVBoxLayout>
 #include <QTableWidget>
 #include <QSpacerItem>
+#include <QComboBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,10 +20,10 @@ QT_END_NAMESPACE
 class GostInput : public QWidget {
     Q_OBJECT
 
-    int rowsAmount = 15, columnsAmount = 3;
     QStringList headers = {"h", "P", "T"};
     QTableWidget *table;
     QVBoxLayout *widgetLayout;
+    int rowsAmount = 15, columnsAmount = 3;
 public:
     GostInput(QWidget *parent = nullptr);
 };
@@ -34,11 +35,15 @@ class ExpInput : public QWidget {
 public:
     ExpInput(QWidget *parent = nullptr);
 private:
-    QVector<QString> stringLabel = {"Ns:", "nb:", "Nb:", "Hb:"};
-    QGridLayout *widgetLayout;
+    QVector<QString> labelStrings = {"N<sub>s<sub>:", "n<sub>b<sub>:", "N<sub>b<sub>:", "H<sub>b<sub>:"};
+    QStringList rangeStrings = {"3 km", "10 km", "15 km"};
     QVector<QLabel*> labels;
     QVector<QLineEdit*> edits;
+    QGridLayout *widgetLayout;
     QSpacerItem *verticalSpacer;
+    QLabel *rangeLabel;
+    QString rangeLabelString = "Range:";
+    QComboBox *rangeBox;
 
 };
 
