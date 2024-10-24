@@ -8,7 +8,7 @@ public:
     // N - refractive index - []
     // h - height - [m]
     virtual double N(double h) override;
-    SegmentedModel(double _Ns = 324.8, double _hs = 0): Ns(_Ns), hs(_hs) {
+    SegmentedAtmosphere(double _Ns = 324.8, double _hs = 0): Ns(_Ns), hs(_hs) {
         dN =  -0.00732 * exp(0.005577 * Ns);
         N1 = Ns + (1000 - hs) * dN;
         H =  (8000 - hs) / log(N1 / 105);

@@ -1,21 +1,18 @@
 #pragma once
+#include <cmath>
+#include "atmosphere_model.h"
+
 
 class ExponentialAtmosphere : public AtmosphereModel{
 public:
-    ExponentialAtmosphere(double _Ns, double _hs) : Ns(_N0), hs(_hs) {}
+    ExponentialAtmosphere(double _Ns, double _hs) : Ns(_Ns), hs(_hs) {}
 
     // SOURCE: (2.30, 2.31)
     //    N : refractive index, []
     //    h : height above the sea level, [m]
-    virtual double N(double h) override {
-        // Values for diaposon 0 - 15 km
-        double const hb = 12192;
-        double const Nb = 66.65;
-        double Hb =  (hb - hs) / log(Ns / Nb);
-        return Ns * exp(-(h - hs) / Hb);
-    }
+    virtual double N(double h) override;
 
 private:
     double Ns;
-    double hs
+    double hs;
 };
