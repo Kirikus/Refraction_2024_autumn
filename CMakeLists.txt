@@ -5,12 +5,13 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-
+set(QT_VERSION_MAJOR 6)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
+set(Boost_DIR "C:/local/boost_1_86_0")
+set(CMAKE_PREFIX_PATH "C:/Qt/6.8.0/mingw_64")
+find_package(Qt NAMES Qt6 COMPONENTS PrintSupport Widgets REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS PrintSupport Widgets REQUIRED)
 
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/qcustomplot) # here adding qcustomplot subfolder
 
@@ -22,3 +23,6 @@ find_package(Qt6 REQUIRED COMPONENTS PrintSupport)
 add_subdirectory(lib)
 add_subdirectory(tests)
 add_subdirectory(main)
+
+target_include_directories(tests PUBLIC lib)
+target_include_directories(main PUBLIC lib)
