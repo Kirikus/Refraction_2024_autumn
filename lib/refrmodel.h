@@ -10,6 +10,13 @@ struct RefrResult
     RefrResult(double npsi_d, double npsi_g, double nd);
 };
 
+struct InvRefrResult
+{
+    double h_s;
+    double d;
+    InvRefrResult(double nh_s, double nd);
+};
+
 
 class RefractionModel
 {
@@ -20,7 +27,7 @@ public:
     // Get Earth radius in meters
     double get_Re() const;
     virtual RefrResult calculate(double const h_a, double const h_s, double const R) = 0;
-    double reverse(double const h_a, double const psi_d, double const R);
+    virtual InvRefrResult reverse(double const h_a, double const psi_d, double const R) = 0;
 };
 
 #endif // REFRMODEL_H
