@@ -24,11 +24,9 @@ RefrResult GeometricRound::calculate(double h_a, double h_s, double R)
     double R_a = oR_e + h_a;
     double R_s = oR_e + h_s;
 
-    // declination angle
+
     double psi_d = std::asin((delta_h/R) * (1 - delta_h/(2*R_a)) + R/(2*R_a));
-    // glide angle
     double psi_g = std::asin((delta_h/R) * (1 + delta_h/(2*R_s)) - R/(2*R_s));
-    // arc length
     double d = R_s * (psi_d - psi_g);
     return RefrResult(psi_d, psi_g, d);
 }
@@ -38,13 +36,11 @@ InvRefrResult GeometricRound::reverse(double h_a, double psi_d, double R)
     double oR_e = get_Re();
     double R_a = oR_e + h_a;
 
-    // target height
     double h_s = std::sqrt(R_a*(R_a - 2*R*std::sin(psi_d)) + R*R) - oR_e;
 
     double R_s = oR_e + h_s;
     double phi_e = std::acos((R_a*R_a + R_s*R_s - R*R)/(2*R_a*R_s));
 
-    // arc length
     double d = R_s * phi_e;
     return InvRefrResult(h_s, d);
 }
@@ -57,11 +53,8 @@ RefrResult EffectiveRadius::calculate(double h_a, double h_s, double R)
     double R_a = oR_e + h_a;
     double R_s = oR_e + h_s;
 
-    // declination angle
     double psi_d = std::asin((delta_h/R) * (1 - delta_h/(2*R_a)) + R/(2*R_a));
-    // glide angle
     double psi_g = std::asin((delta_h/R) * (1 + delta_h/(2*R_s)) - R/(2*R_s));
-    // arc length
     double d = R_s * (psi_d - psi_g);
     return RefrResult(psi_d, psi_g, d);
 }
@@ -71,13 +64,11 @@ InvRefrResult EffectiveRadius::reverse(double h_a, double psi_d, double R)
     double oR_e = k()*get_Re();
     double R_a = oR_e + h_a;
 
-    // target height
     double h_s = std::sqrt(R_a*(R_a - 2*R*std::sin(psi_d)) + R*R) - oR_e;
 
     double R_s = oR_e + h_s;
     double phi_e = std::acos((R_a*R_a + R_s*R_s - R*R)/(2*R_a*R_s));
 
-    // arc length
     double d = R_s * phi_e;
     return InvRefrResult(h_s, d);
 }
