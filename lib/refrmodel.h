@@ -1,6 +1,7 @@
 #ifndef REFRMODEL_H
 #define REFRMODEL_H
 
+#include <cmath>
 
 // psi_d : declination angle in radians;
 // psi_g : glide angle in radians;
@@ -10,6 +11,7 @@ struct RefrResult
     double psi_d;
     double psi_g;
     double d;
+    RefrResult();
     RefrResult(double npsi_d, double npsi_g, double nd);
 };
 
@@ -19,6 +21,7 @@ struct InvRefrResult
 {
     double h_s;
     double d;
+    InvRefrResult();
     InvRefrResult(double nh_s, double nd);
 };
 
@@ -38,7 +41,7 @@ public:
     // h_a : station height in meters;
     // psi_d : declination angle in radians;
     // R : slant range in meters.
-    virtual InvRefrResult reverse(double const h_a, double const psi_d, double const R) = 0;
+    InvRefrResult reverse(double const h_a, double const psi_d, double const R);
 };
 
 #endif // REFRMODEL_H
