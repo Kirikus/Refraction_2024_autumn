@@ -17,7 +17,7 @@ add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/qcustomplot) # here adding qcustomplo
 set(Boost_USE_STATIC_LIBS OFF)
 find_package(Qt6 REQUIRED COMPONENTS PrintSupport)
 find_package(Boost REQUIRED COMPONENTS locale unit_test_framework)
-find_package(Qt6 REQUIRED COMPONENTS PrintSupport)
+find_package(Qt6 REQUIRED COMPONENTS PrintSupport) # dependency for qcustomplot
 
 add_subdirectory(lib)
 add_subdirectory(tests)
