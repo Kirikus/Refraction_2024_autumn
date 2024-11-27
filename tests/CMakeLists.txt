@@ -30,7 +30,7 @@ endif()
 target_link_libraries(tests PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 target_link_libraries(tests PRIVATE core)
 target_link_libraries(tests PRIVATE ${Boost_LIBRARIES})
-target_include_directories(tests PRIVATE ${Boost_INCLUDE_DIR})
+target_include_directories(tests PRIVATE ${Boost_INCLUDE_DIR}) # including boost
 target_compile_definitions(tests PRIVATE QCUSTOMPLOT_USE_LIBRARY)
 target_link_libraries(tests PUBLIC qcustomplot)
 
