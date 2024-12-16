@@ -1,10 +1,10 @@
-#pragma once
-#include <vector>
+// #pragma once
+// #include <vector>
 
-//TBD
+////TBD
 
-class Linear : public RtoRMap {
-    public:
-        Linear(const std::vector<std::pair<double, double>>& map_table) : RtoRMap(map_table) {}
-        virtual double f(double x) override;
-};
+// class Linear : public RtoRMap {
+//     public:
+//         Linear(const std::vector<std::pair<double, double>>& map_table) :
+//         RtoRMap(map_table) {} virtual double f(double x) override;
+// };
