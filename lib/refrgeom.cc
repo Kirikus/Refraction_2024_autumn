@@ -26,7 +26,7 @@ RefrResult GeometricRound::calculate(double h_a, double h_s, double R)
 
 RefrResult EffectiveRadius::calculate(double h_a, double h_s, double R)
 {
-    double oR_e = k()*get_Re();
+    double oR_e = k(h_a, h_s, R)*get_Re();
     double delta_h = h_a - h_s;
     double R_a = oR_e + h_a;
     double R_s = oR_e + h_s;
@@ -38,4 +38,4 @@ RefrResult EffectiveRadius::calculate(double h_a, double h_s, double R)
 }
 
 
-double FourThirds::k() { return 4/3; }
+double FourThirds::k(double, double, double) { return 4/3; }

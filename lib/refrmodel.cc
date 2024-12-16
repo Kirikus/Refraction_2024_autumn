@@ -12,8 +12,8 @@ double RefractionModel::get_Re() const { return R_e; }
 
 InvRefrResult RefractionModel::reverse(double h_a, double psi_d, double R)
 {
-    double s_begin = h_a-R,
-           s_end   = h_a+R,
+    double s_begin = (h_a-R>-500)? h_a-R : -500,
+           s_end   = (h_a+R<15000)? h_a+R : 15000,
            nh_s;
     RefrResult answer;
 
