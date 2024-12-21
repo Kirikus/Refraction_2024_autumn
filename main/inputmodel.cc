@@ -37,7 +37,6 @@ AtmosphereModel* InputModel::getAtmoModel() {
             int range = ui->exp->get_rangeIndex();
             QVector<double> atmo_parameters = ui->exp->get_edits();
             QVector<double> refr_parameters = static_cast<UsualRefrInput>(ui->refraList->currentWidget()).get_edits();
-            // QVector<double> refr_parameters = {0, 0};
             switch (range) {
 
             case RANGE_3K:
@@ -62,7 +61,6 @@ AtmosphereModel* InputModel::getAtmoModel() {
 
 RefractionModel* InputModel::getRefrModel() {
     int mode = ui->refraMode->currentIndex();
-    std::cout<<"Got moded index\n";
     const int GEOMLINE=0, GEOMROUND=1, FOURTHIRDS=2,
         AVRGKANALYT=3, AVRGPANALYT=4;
 
