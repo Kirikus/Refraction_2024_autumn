@@ -5,7 +5,7 @@ RefrResult::RefrResult() {}
 RefrResult::RefrResult(double npsi_d, double npsi_g, double nd) : psi_d{npsi_d}, psi_g{npsi_g}, d{nd} {}
 
 InvRefrResult::InvRefrResult() {}
-InvRefrResult::InvRefrResult(double nh_s, double nd) : h_s{nh_s}, d{nd} {}
+InvRefrResult::InvRefrResult(double nh_s, double npsi_g, double nd) : h_s{nh_s}, psi_g{npsi_g}, d{nd} {}
 
 
 double RefractionModel::get_Re() const { return R_e; }
@@ -28,5 +28,5 @@ InvRefrResult RefractionModel::reverse(double h_a, double psi_d, double R)
             s_begin = nh_s;
     } while (std::abs(answer.psi_d - psi_d) > 1e-6);
 
-    return InvRefrResult(nh_s, answer.d);
+    return InvRefrResult(nh_s, answer.psi_g, answer.d);
 }

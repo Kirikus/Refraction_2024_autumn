@@ -1,4 +1,5 @@
 #include "inputmodel.h"
+#include <iostream>
 #include "ui_inputmodel.h"
 
 InputModel::InputModel(QWidget *parent)
@@ -34,17 +35,19 @@ AtmosphereModel* InputModel::getAtmoModel() {
 
     case EXP: {
             int range = ui->exp->get_rangeIndex();
-            QVector<double> parameters = ui->exp->get_edits();
+            QVector<double> atmo_parameters = ui->exp->get_edits();
+            QVector<double> refr_parameters = static_cast<UsualRefrInput>(ui->refraList->currentWidget()).get_edits();
+            // QVector<double> refr_parameters = {0, 0};
             switch (range) {
 
             case RANGE_3K:
-                return new ExponentialAtmosphere3k(parameters[0],parameters[3]);
+                return new ExponentialAtmosphere3k(atmo_parameters[0], refr_parameters[1]);
 
             case RANGE_10K:
-                return new ExponentialAtmosphere10k(parameters[0],parameters[3]);
+                return new ExponentialAtmosphere10k(atmo_parameters[0],refr_parameters[1]);
 
             case RANGE_15K:
-                return new ExponentialAtmosphere15k(parameters[0],parameters[3]);
+                return new ExponentialAtmosphere15k(atmo_parameters[0], refr_parameters[1]);
             // TODO
             //case RANGE_CUSTOM:
             default:
@@ -59,6 +62,7 @@ AtmosphereModel* InputModel::getAtmoModel() {
 
 RefractionModel* InputModel::getRefrModel() {
     int mode = ui->refraMode->currentIndex();
+    std::cout<<"Got moded index\n";
     const int GEOMLINE=0, GEOMROUND=1, FOURTHIRDS=2,
         AVRGKANALYT=3, AVRGPANALYT=4;
 
@@ -76,6 +80,37 @@ RefractionModel* InputModel::getRefrModel() {
     // TODO: assert the result of 'getAtmoModel()'
     case AVRGKANALYT:
         return new AverageKAnalytical(static_cast<ExponentialAtmosphere*>(getAtmoModel()));
+
+    // TODO: assert the result of 'getAtmoModel()'
+    case AVRGPANALYT:
+        return new AveragePAnalytical(static_cast<ExponentialAtmosphere*>(getAtmoModel()));
+
+    default:
+        std::runtime_error("Impossible refraction index.");
+    }
+}
+
+QVector<double> InputModel::getRefrValues() {
+    int mode = ui->refraMode->currentIndex();
+    const int GEOMLINE=0, GEOMROUND=1, FOURTHIRDS=2,
+        AVRGKANALYT=3, AVRGPANALYT=4;
+
+    switch (mode) {
+
+    case GEOMLINE:
+        return ui->geomLine->get_edits();
+
+    case GEOMROUND:
+        return ui->geomRound->get_edits();
+
+    case FOURTHIRDS:
+        return ui->fourThirds->get_edits();
+
+    case AVRGKANALYT:
+        return ui->avrgKanalyt->get_edits();
+
+    case AVRGPANALYT:
+        return ui->avrgPanalyt->get_edits();
 
     default:
         std::runtime_error("Impossible refraction index.");

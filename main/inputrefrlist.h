@@ -13,7 +13,7 @@ class UsualRefrInput : public QWidget {
 
 public:
     UsualRefrInput(QWidget *parent = nullptr);
-    // values = {h_a, h_b, R}.
+    // values = {h_a, h_s, R}.
     QVector<double> get_edits();
 private:
     QVector<QString> labelStrings = {"h<sub>a<sub>:", "h<sub>s<sub>:", "R:"};
