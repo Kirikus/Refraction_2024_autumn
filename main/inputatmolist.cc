@@ -1,4 +1,4 @@
-#include "inputlist.h"
+#include "inputatmolist.h"
 
 GostInput::GostInput(QWidget *parent) : QWidget(parent) {
     widgetLayout = new QVBoxLayout(this);
@@ -34,4 +34,15 @@ ExpInput::ExpInput(QWidget *parent) : QWidget(parent) {
     rangeBox->addItems(rangeStrings);
     widgetLayout->addWidget(rangeLabel, widgetLayout->rowCount(), 0);
     widgetLayout->addWidget(rangeBox, widgetLayout->rowCount()-1, 1);
+}
+
+int ExpInput::get_rangeIndex() {
+    return rangeBox->currentIndex();
+}
+
+QVector<double> ExpInput::get_edits() {
+    QVector<double> vals;
+    for (int i=0; i<labelStrings.length(); ++i)
+        vals.append((edits[i]->text()).toDouble());
+    return vals;
 }

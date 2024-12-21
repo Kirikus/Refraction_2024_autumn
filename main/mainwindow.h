@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "qcustomplot.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -16,7 +17,10 @@ class MainWindow : public QMainWindow {
   MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
 
- private:
+ public slots:
+  void redrawGraph();
+
+  private:
   Ui::MainWindow *ui;
 };
 #endif  // MAINWINDOW_H
