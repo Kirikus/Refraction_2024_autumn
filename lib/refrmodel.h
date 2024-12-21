@@ -16,13 +16,15 @@ struct RefrResult
 };
 
 // h_s : target height in meters;
+// psi_g : glide angle in radians;
 // d : arc length in meters.
 struct InvRefrResult
 {
     double h_s;
+    double psi_g;
     double d;
     InvRefrResult();
-    InvRefrResult(double nh_s, double nd);
+    InvRefrResult(double nh_s, double psi_g, double nd);
 };
 
 

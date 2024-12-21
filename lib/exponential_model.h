@@ -20,6 +20,7 @@ class ExponentialAtmosphere : public AtmosphereModel {
 };
 
 class ExponentialAtmosphere3k : public ExponentialAtmosphere {
+ public:
   ExponentialAtmosphere3k(double _Ns, double _hs)
       : ExponentialAtmosphere(_Ns, _hs, 0.0) {
     const double dN = -0.00732 * std::exp(0.005577 * Ns);
