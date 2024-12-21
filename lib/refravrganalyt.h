@@ -8,6 +8,7 @@
 class AverageKAnalytical : public EffectiveRadius
 {
     ExponentialAtmosphere* atmo;
+public:
     AverageKAnalytical(ExponentialAtmosphere* atmo): atmo{atmo} {};
     // Reference: Refraction manual (2.38);
     // h_a : station height in meters;
@@ -21,6 +22,7 @@ class AverageKAnalytical : public EffectiveRadius
 class AveragePAnalytical : public EffectiveRadius
 {
     ExponentialAtmosphere* atmo;
+public:
     AveragePAnalytical(ExponentialAtmosphere* atmo): atmo{atmo} {};
     // Reference: Refraction manual (2.38);
     // h_a : station height in meters;

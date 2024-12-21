@@ -121,7 +121,7 @@
           <number>4</number>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>3</number>
          </property>
          <widget class="GostInput" name="gost">
           <layout class="QVBoxLayout" name="verticalLayout_3"/>
@@ -231,17 +231,27 @@
          </property>
          <item>
           <property name="text">
-           <string>Geometric round</string>
+           <string>Geometric Line</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>Geometric line</string>
+           <string>Geometric Round</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>Aware</string>
+           <string>Four Thirds</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Average K Analytical</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Average P Analytical</string>
           </property>
          </item>
         </widget>
@@ -266,9 +276,11 @@
          <property name="currentIndex">
           <number>0</number>
          </property>
-         <widget class="QWidget" name="line"/>
-         <widget class="QWidget" name="round"/>
-         <widget class="QWidget" name="aware"/>
+         <widget class="UsualRefrInput" name="geomLine"/>
+         <widget class="UsualRefrInput" name="geomRound"/>
+         <widget class="UsualRefrInput" name="fourThirds"/>
+         <widget class="UsualRefrInput" name="avrgKanalyt"/>
+         <widget class="UsualRefrInput" name="avrgPanalyt"/>
         </widget>
        </item>
       </layout>
@@ -281,13 +293,19 @@
   <customwidget>
    <class>ExpInput</class>
    <extends>QWidget</extends>
-   <header>inputlist.h</header>
+   <header>inputatmolist.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>GostInput</class>
    <extends>QWidget</extends>
-   <header>inputlist.h</header>
+   <header>inputatmolist.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>UsualRefrInput</class>
+   <extends>QWidget</extends>
+   <header>inputrefrlist.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
