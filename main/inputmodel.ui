@@ -274,7 +274,7 @@
           <number>4</number>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>3</number>
          </property>
          <widget class="UsualRefrInput" name="geomLine"/>
          <widget class="UsualRefrInput" name="geomRound"/>
